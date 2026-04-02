@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { electricDepts } from "@/lib/data";
 
 // Sadə CORS helper
-function getCorsHeaders(req: NextRequest) {
+function getCorsHeaders(_req: NextRequest) {
   return {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -16,15 +16,15 @@ export async function OPTIONS(req: NextRequest) {
   return new NextResponse(null, { status: 204, headers: getCorsHeaders(req) });
 }
 
-// GET handler
 export async function GET(
   req: NextRequest,
-  context: { params: { code: string } }, // context.params artıq Promise deyil
+  context: { params: Promise<{ code: string }> },
 ) {
   const headers = getCorsHeaders(req);
-  const { code } = context.params;
 
-  // electricCode ilə müqayisə üçün stringə çevirək
+  // 👇 ƏN VACİB HİSSƏ
+  const { code } = await context.params;
+
   const deptUser = electricDepts.find(
     (f) => String(f.electricCode) === code || String(f.id) === code,
   );
