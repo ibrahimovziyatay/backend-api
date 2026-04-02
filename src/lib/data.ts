@@ -26,7 +26,7 @@ export const users: User[] = [
 ];
 
 export const products: Product[] = [
-  { id: 1, name: "Laptop", price: 1200, outhor: "Kilina" },
+  { id: 1, name: "ASUS", price: 1200, outhor: "Kilina" },
   { id: 2, name: "Phone", price: 800, outhor: "Luka" },
   { id: 3, name: "Tablet", price: 600, outhor: "Denny" },
   { id: 4, name: "Airpod", price: 6300, outhor: "Ziyatay" },
